@@ -6,6 +6,12 @@ function Label({ children }: { children: React.ReactNode }) {
   return <p className={`${pixel} text-bug mb-3`}>{"// "}{children}</p>;
 }
 
+// "use cache" lets the page stay prerendered; the year refreshes on the default cache revalidation.
+async function Year() {
+  "use cache";
+  return new Date().getFullYear();
+}
+
 // Each oopsie is a purely decorative broken-UI demo plus a bug-ticket stamp.
 const oopsies: { id: string; title: string; sev: string; status: string; demo: React.ReactNode }[] = [
   {
@@ -203,7 +209,7 @@ export default function Home() {
           <a className="rounded bg-fg text-bg px-4 py-2 font-medium" href={profile.linkedin}>Message me on LinkedIn</a>
         </div>
         <p className="mt-12 font-mono text-xs text-muted">
-          © 2026 {profile.name} · 0 known bugs* <br />
+          © <Year /> {profile.name} · 0 known bugs* <br />
           * that we know of
         </p>
       </footer>
