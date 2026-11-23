@@ -38,21 +38,21 @@ export const experience = [
   {
     company: "NS90",
     role: "Senior QA Engineer",
-    dates: "Feb 2024 — Present",
+    dates: "Feb 2024 - Present",
     place: "Cork, Ireland",
     points: ["Quality across web products, from test strategy to release."],
   },
   {
     company: "NEORIS",
     role: "QA Engineer",
-    dates: "Dec 2023 — Feb 2024",
+    dates: "Dec 2023 - Feb 2024",
     place: "Remote · Madrid",
     points: ["QA engineering on client projects."],
   },
   {
     company: "Playtech",
     role: "QA Automation Engineer",
-    dates: "Apr 2022 — Oct 2023",
+    dates: "Apr 2022 - Oct 2023",
     place: "Gibraltar",
     points: [
       "Extended UI and API automation (Cypress, Python/Selenium, Postman).",
@@ -62,7 +62,7 @@ export const experience = [
   {
     company: "Playtech",
     role: "QA Engineer",
-    dates: "Nov 2019 — Mar 2022",
+    dates: "Nov 2019 - Mar 2022",
     place: "Gibraltar",
     points: [
       "Owned test strategy and plans; automated API and frontend tests with Cypress.",
@@ -72,7 +72,7 @@ export const experience = [
   {
     company: "Ladbrokes Coral Group",
     role: "Digital Quality Analyst",
-    dates: "Aug 2018 — Nov 2019",
+    dates: "Aug 2018 - Nov 2019",
     place: "Gibraltar",
     points: ["Release testing across gaming brands, keeping compliance scripts up to date."],
   },
@@ -81,7 +81,7 @@ export const experience = [
 export const education = {
   school: "The Open University",
   degree: "BSc (Hons) Computing & IT",
-  dates: "2021 — 2027 (loading… 85%)",
+  dates: "2021 - 2027 (loading… 85%)",
 };
 
 export const certs = [
