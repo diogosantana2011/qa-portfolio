@@ -1,5 +1,7 @@
 # qa-portfolio 🐛
 
+[![CI](https://github.com/diogosantana2011/qa-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/diogosantana2011/qa-portfolio/actions/workflows/ci.yml)
+
 Hey, I'm Diogo. I've been a QA engineer for about 8 years and now work as a Senior QA in Cork.
 
 This repo is my personal site. A UI colleague built a really nice one for himself, and I wanted one too. Since I spend my days finding broken stuff, the joke here is that my site shows the broken stuff off on purpose. There's a section of "oopsies": a button that's escaped its box, a missing image, a missing translation key, `coffee is undefined`… each one tagged like a proper bug ticket.
@@ -21,7 +23,7 @@ It's pretty much just one page. It uses Next.js because that's what Vercel likes
 | `app/page.tsx` | The page itself, including the oopsies |
 | `app/globals.css` | Colours, the joke ticker, and the glitch effect |
 | `DESIGN.md` | The style rules I stuck to: clean, with a few retro and terminal touches |
-| `tests/smoke.spec.ts` | Checks the page loads, the links work, and nothing scrolls sideways by accident |
+| `tests/smoke.spec.ts` | Checks the page loads, the links work, and nothing scrolls sideways by accident. Runs on every push (see the badge) |
 
 ## Running it locally
 

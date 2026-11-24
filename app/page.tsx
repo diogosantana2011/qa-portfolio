@@ -6,7 +6,7 @@ const primaryBtn = "inline-flex h-11 items-center rounded-lg bg-fg px-5 font-med
 const outlineBtn = "inline-flex h-11 items-center rounded-lg border border-line px-5 font-medium hover:border-line-hi";
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <p className="font-pixel text-[12px] uppercase tracking-[0.12em] text-muted mb-3">{"// "}{children}</p>;
+  return <p className="font-pixel text-[12px] uppercase tracking-[0.12em] text-bug mb-3">{"// "}{children}</p>;
 }
 
 // "use cache" lets the page stay prerendered; the year refreshes on the default cache revalidation.
@@ -99,6 +99,8 @@ const careers = experience.reduce<{ company: string; roles: typeof experience }[
   else groups.push({ company: e.company, roles: [e] });
   return groups;
 }, []);
+
+const smokeRuns = `${profile.github}/qa-portfolio/actions/workflows/ci.yml`;
 
 const pct = Math.round((education.credits / education.totalCredits) * 100);
 
@@ -356,6 +358,10 @@ export default function Home() {
               © <Year /> {profile.name} · 0 known bugs* <br />
               * that we know of
             </p>
+            <a href={smokeRuns} className="mt-3 inline-block" aria-label="Smoke test results on GitHub Actions">
+              {/* eslint-disable-next-line @next/next/no-img-element -- external SVG badge, nothing for next/image to optimise */}
+              <img src={`${smokeRuns}/badge.svg`} alt="Smoke tests status" height={20} />
+            </a>
           </footer>
         </div>
       </main>

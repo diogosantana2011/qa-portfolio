@@ -38,11 +38,24 @@ test("every bug card shows a severity pill and an unwrapped status (AC-09, AC-10
   }
 });
 
+test("bug cards glitch-shake on hover", async ({ page }) => {
+  await page.goto("/");
+  const card = page.locator("article").first();
+  await card.hover();
+  await expect(card).toHaveCSS("animation-name", "glitch");
+});
+
 test.describe("reduced motion", () => {
   test.use({ reducedMotion: "reduce" });
   test("ticker is static (AC-06)", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator(".ticker")).toHaveCSS("animation-name", "none");
+  });
+  test("bug cards don't shake", async ({ page }) => {
+    await page.goto("/");
+    const card = page.locator("article").first();
+    await card.hover();
+    await expect(card).toHaveCSS("animation-name", "none");
   });
 });
 

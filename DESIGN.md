@@ -5,7 +5,7 @@ Clean, minimal base with a pinch of retro and terminal. The joke is the broken b
 ## Tokens (see `app/globals.css`)
 - Neutrals: `bg`, `fg`, `text-2` (body copy), `muted` (meta), `card`, `card-2` (preview wells), `line`, `line-hi` (hover). Light and dark themes follow the system setting.
 - `muted` (#A1A1AA in dark) is the darkest grey allowed for text. Meta text is never below 13px.
-- `bug` red is for bugs only: bug IDs and Critical severity. Never for section labels.
+- `bug` red: bug IDs, Critical severity and the `// section` labels.
 - `ok` green: XP, "fixed", the current role, focus rings. `warn` amber: Medium severity.
 
 ## Type
@@ -16,5 +16,5 @@ Clean, minimal base with a pinch of retro and terminal. The joke is the broken b
 ## Rules
 - Broken-UI demos stay inside their card's preview well, with `role="img"` and an `aria-label` saying the bug is intentional. Real content stays semantic.
 - Severity is a pill with a dot and text, never colour alone.
-- Motion is limited to the caret blink, the ticker (pauses on hover/focus) and a 150ms card lift. All of it turns off under `prefers-reduced-motion`.
+- Motion is limited to the caret blink, the ticker (pauses on hover/focus) and the bug cards' 150ms lift plus glitch shake (hover on desktop, tap on mobile). All of it turns off under `prefers-reduced-motion`.
 - No CRT scanlines and no full-page effects.

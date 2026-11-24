@@ -72,14 +72,20 @@ body {
 .ticker-band:hover .ticker, .ticker-band:focus-within .ticker { animation-play-state: paused; }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
-/* oopsies cards lift on hover */
+/* oopsies cards lift on hover, and glitch-shake on hover (desktop) or tap (mobile) */
 .lift { transition: transform 150ms, border-color 150ms; }
 .lift:hover { transform: translateY(-2px); border-color: var(--line-hi); }
+.lift:hover, .lift:active { animation: glitch 150ms steps(2) 1; }
+@keyframes glitch {
+  0% { transform: translate(2px, -1px); filter: hue-rotate(90deg); }
+  50% { transform: translate(-2px, 1px); }
+  100% { transform: none; filter: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .caret::after { animation: none; }
-  .lift, .lift:hover { transition: none; transform: none; }
+  .lift, .lift:hover, .lift:active { transition: none; transform: none; animation: none; }
   .ticker { animation: none; width: auto; flex-wrap: wrap; justify-content: center; row-gap: 8px; }
   .ticker > [aria-hidden] { display: none; }
   .ticker-band { mask-image: none; }
