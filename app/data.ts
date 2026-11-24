@@ -5,6 +5,7 @@ export const profile = {
   location: "Cork, Ireland",
   github: "https://github.com/diogosantana2011",
   linkedin: "https://www.linkedin.com/in/diogo-santana-8a83bbb2/",
+  stack: "Playwright · Cypress · k6",
   yearsInQa: 8, // shortcut: hardcoded (static prerender), bump yearly
 };
 
@@ -19,14 +20,15 @@ export const jokes = [
   "who tests the tests?",
 ];
 
-export const toolbox = [
-  { name: "Playwright", repo: "playwright" },
-  { name: "Cypress", repo: "Cypress" },
-  { name: "k6", repo: "K6-Performance" },
-  { name: "Karate", repo: "karate" },
-  { name: "Appium", repo: "appium" },
-  { name: "TestCafe", repo: "testcafe" },
-  { name: "PactumJS", repo: "pactumJS" },
+// private: built a framework/repo with it, but the repo is private (mention, never link).
+export const toolbox: { name: string; private?: true }[] = [
+  { name: "Playwright", private: true },
+  { name: "Cypress", private: true },
+  { name: "k6", private: true },
+  { name: "Karate", private: true },
+  { name: "Appium", private: true },
+  { name: "TestCafe", private: true },
+  { name: "PactumJS", private: true },
   { name: "JMeter" },
   { name: "Postman" },
   { name: "Selenium / Python" },
@@ -34,8 +36,16 @@ export const toolbox = [
   { name: "TestRail" },
 ];
 
+// Raw learning repos, shown with a "check at your own risk" warning.
+export const learningRepos: { name: string; repo: string; private?: true }[] = [
+  { name: "JavaScript", repo: "JS_test" },
+  { name: "Python", repo: "Python" },
+  { name: "rom-gba", repo: "rom-gba", private: true },
+];
+
 export const experience = [
   {
+    hash: "a1f3c2",
     company: "NS90",
     role: "Senior QA Engineer",
     dates: "Feb 2024 - Present",
@@ -43,6 +53,7 @@ export const experience = [
     points: ["Quality across web products, from test strategy to release."],
   },
   {
+    hash: "7be019",
     company: "NEORIS",
     role: "QA Engineer",
     dates: "Dec 2023 - Feb 2024",
@@ -50,6 +61,7 @@ export const experience = [
     points: ["QA engineering on client projects."],
   },
   {
+    hash: "4c9e1d",
     company: "Playtech",
     role: "QA Automation Engineer",
     dates: "Apr 2022 - Oct 2023",
@@ -60,6 +72,7 @@ export const experience = [
     ],
   },
   {
+    hash: "2d07ab",
     company: "Playtech",
     role: "QA Engineer",
     dates: "Nov 2019 - Mar 2022",
@@ -70,6 +83,7 @@ export const experience = [
     ],
   },
   {
+    hash: "e5b830",
     company: "Ladbrokes Coral Group",
     role: "Digital Quality Analyst",
     dates: "Aug 2018 - Nov 2019",
@@ -81,14 +95,16 @@ export const experience = [
 export const education = {
   school: "The Open University",
   degree: "BSc (Hons) Computing & IT",
-  dates: "2021 - 2027 (loading… 85%)",
+  dates: "2021 - present · part-time",
+  credits: 180, // passed credits only (stage 1: 120, stage 2 so far: 60); bump as modules pass
+  totalCredits: 360,
 };
 
 export const certs = [
-  "JSE-40-01 Certified Entry-Level JavaScript Programmer · OpenEDG · 2023",
-  "TestJS Summit participant · GitNation · 2022",
-  "JavaScript Essentials 1 · Cisco · 2023",
-  "Networking Essentials · Cisco · 2023",
+  { name: "JSE-40-01 Certified Entry-Level JavaScript Programmer", issuer: "OpenEDG", year: 2023 },
+  { name: "TestJS Summit participant", issuer: "GitNation", year: 2022 },
+  { name: "JavaScript Essentials 1", issuer: "Cisco", year: 2023 },
+  { name: "Networking Essentials", issuer: "Cisco", year: 2023 },
 ];
 
 export const moreCerts = [
@@ -103,5 +119,4 @@ export const moreCerts = [
   "Jenkins Essential Training",
   "Selenium Essential Training",
   "Introducing Postman",
-  "…and ~20 more on LinkedIn Learning & Codecademy",
 ];

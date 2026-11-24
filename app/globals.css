@@ -3,32 +3,45 @@
 :root {
   --bg: #fafafa;
   --fg: #18181b;
-  --muted: #71717a;
+  --text-2: #3f3f46;
+  --muted: #52525b;
   --card: #ffffff;
+  --card-2: #f4f4f5;
   --line: #e4e4e7;
-  --bug: #ff4d4f;
-  --ok: #16a34a;
+  --line-hi: #d4d4d8;
+  --bug: #dc2626;
+  --ok: #15803d;
+  --warn: #b45309;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0c0c0e;
-    --fg: #ededed;
-    --muted: #a1a1aa;
-    --card: #16161a;
-    --line: #27272a;
+    --bg: #0e0e11;
+    --fg: #f2f2f3;
+    --text-2: #c4c4cc;
+    --muted: #a1a1aa; /* darkest allowed text grey */
+    --card: #16161b;
+    --card-2: #1d1d24;
+    --line: #2a2a33;
+    --line-hi: #3a3a46;
+    --bug: #f87171;
     --ok: #4ade80;
+    --warn: #fbbf24;
   }
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-fg: var(--fg);
+  --color-text-2: var(--text-2);
   --color-muted: var(--muted);
   --color-card: var(--card);
+  --color-card-2: var(--card-2);
   --color-line: var(--line);
+  --color-line-hi: var(--line-hi);
   --color-bug: var(--bug);
   --color-ok: var(--ok);
+  --color-warn: var(--warn);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jb-mono);
   --font-pixel: var(--font-press);
@@ -39,32 +52,35 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 17px;
   overflow-x: hidden;
 }
 
+:focus-visible { outline: 2px solid var(--ok); outline-offset: 3px; }
+
 /* blinking terminal caret */
 .caret::after {
-  content: "▋";
+  content: "▌";
   margin-left: 2px;
   animation: blink 1s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* joke ticker: content is duplicated in markup, so -50% loops seamlessly */
-.ticker { animation: ticker 40s linear infinite; }
+.ticker-band { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ticker { animation: ticker 60s linear infinite; }
+.ticker-band:hover .ticker, .ticker-band:focus-within .ticker { animation-play-state: paused; }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
-/* short glitch flicker on oopsies cards */
-.glitch:hover { animation: glitch 150ms steps(2) 1; }
-@keyframes glitch {
-  0% { transform: translate(2px, -1px); filter: hue-rotate(90deg); }
-  50% { transform: translate(-2px, 1px); }
-  100% { transform: none; filter: none; }
-}
-
-/* pixel HP bar */
-.hp { background: repeating-linear-gradient(90deg, var(--ok) 0 10px, transparent 10px 12px); }
+/* oopsies cards lift on hover */
+.lift { transition: transform 150ms, border-color 150ms; }
+.lift:hover { transform: translateY(-2px); border-color: var(--line-hi); }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker, .glitch:hover, .caret::after { animation: none; }
+  html { scroll-behavior: auto; }
+  .caret::after { animation: none; }
+  .lift, .lift:hover { transition: none; transform: none; }
+  .ticker { animation: none; width: auto; flex-wrap: wrap; justify-content: center; row-gap: 8px; }
+  .ticker > [aria-hidden] { display: none; }
+  .ticker-band { mask-image: none; }
 }
