@@ -19,7 +19,18 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      - run: npx playwright test
+      - run: npx playwright test --reporter=list,json
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: results.json
+      # The site reads this annotation (via the public API) to show "x/y passed" in the hero.
+      - name: Publish test counts
+        if: always()
+        run: |
+          node -e '
+            const { stats: s } = require("./results.json");
+            const total = s.expected + s.unexpected + s.flaky + s.skipped;
+            console.log(`::notice title=smoke-results::${JSON.stringify({ passed: s.expected + s.flaky, failed: s.unexpected, total })}`);
+          '
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

@@ -26,6 +26,12 @@ test("hero: XP joke renders as intended and primary CTA is there (AC-01..03)", a
   expect((await cta.boundingBox())!.height).toBeGreaterThanOrEqual(44);
 });
 
+test("hero status panel shows the CI row", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByText("tests", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "CI status on GitHub Actions" })).toHaveAttribute("href", /actions\/workflows\/ci\.yml/);
+});
+
 test("every bug card shows a severity pill and an unwrapped status (AC-09, AC-10)", async ({ page }) => {
   await page.goto("/");
   const cards = page.locator("article");

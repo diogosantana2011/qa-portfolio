@@ -1,3 +1,4 @@
+import { CiStatus } from "./ci";
 import { certs, education, experience, jokes, learningRepos, moreCerts, profile, toolbox } from "./data";
 
 const h2 = "text-[length:clamp(28px,4vw,40px)] font-bold tracking-tight";
@@ -100,8 +101,6 @@ const careers = experience.reduce<{ company: string; roles: typeof experience }[
   return groups;
 }, []);
 
-const smokeRuns = `${profile.github}/qa-portfolio/actions/workflows/ci.yml`;
-
 const pct = Math.round((education.credits / education.totalCredits) * 100);
 
 const personLd = {
@@ -164,6 +163,7 @@ export default function Home() {
               <dd className="text-text-2">{profile.location}</dd>
               <dt className="text-muted">stack</dt>
               <dd className="text-text-2">{profile.stack}</dd>
+              <CiStatus />
             </dl>
           </div>
         </section>
@@ -358,10 +358,6 @@ export default function Home() {
               © <Year /> {profile.name} · 0 known bugs* <br />
               * that we know of
             </p>
-            <a href={smokeRuns} className="mt-3 inline-block" aria-label="Smoke test results on GitHub Actions">
-              {/* eslint-disable-next-line @next/next/no-img-element -- external SVG badge, nothing for next/image to optimise */}
-              <img src={`${smokeRuns}/badge.svg`} alt="Smoke tests status" height={20} />
-            </a>
           </footer>
         </div>
       </main>
