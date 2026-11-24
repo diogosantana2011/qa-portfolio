@@ -276,15 +276,14 @@ export default function Home() {
                     className={`absolute -left-[7px] top-1.5 h-3.5 w-3.5 rounded-full border-2 ${gi === 0 ? "border-ok bg-ok" : "border-muted bg-bg"}`}
                     aria-hidden
                   />
-                  {g.roles.length > 1 && <p className="mb-2 font-semibold">{g.company}</p>}
+                  <p className="mb-2 font-semibold">{g.company}</p>
                   <div className="space-y-5">
                     {g.roles.map((e) => (
                       <div key={e.hash}>
                         <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                           <h3 className="font-semibold">
-                            <span className="mr-2 font-mono text-[13px] font-normal text-muted" aria-hidden>{e.hash}</span>
+                            <span className="mr-2 font-mono text-[13px] font-normal text-muted" aria-hidden>{e.hash} </span>
                             {e.role}
-                            {g.roles.length === 1 && <span className="font-normal text-muted"> @ {e.company}</span>}
                           </h3>
                           <p className={meta}>{e.dates} · {e.place}</p>
                         </div>
